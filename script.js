@@ -1,10 +1,24 @@
 // defining elements
 const container = document.querySelector('#container');
+const colorPicker = document.querySelector('.colorPicker');
 
 // defining variables
 let resolution = 16;
 let pixels = [];
+let currentColor = colorPicker.value;
+let clicked = false;
 
+
+// adding events (apart from the ones for the pixels)
+colorPicker.addEventListener('change', event => {
+    currentColor = colorPicker.value;
+});
+window.addEventListener('mousedown', event => {
+    clicked = true;
+});
+window.addEventListener('mouseup', event => {
+    clicked = false;
+});
 
 // defining some functions
 function createElement(tag, cls=null, text=null, attr=null) {
@@ -60,12 +74,24 @@ function constructPixels() {
         let pixelArray = [];
         for (let x = 0; x < resolution; x++) {
             let item = createElement('div', 'pixel');
+            addEventToPixel(item);
             pixelArray.push(item);
             list.appendChild(item);
         }
         container.appendChild(list);
         pixels.push(pixelArray);
     }
+}
+
+function addEventToPixel(pixelElem) {
+    pixelElem.addEventListener('mousedown', event => {
+        event.target.style.backgroundColor = currentColor;
+    });
+    pixelElem.addEventListener('mouseover', event => {
+        if (clicked) {
+            event.target.style.backgroundColor = currentColor;
+        }
+    });
 }
 
 // Run on start
