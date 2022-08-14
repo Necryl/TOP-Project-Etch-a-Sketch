@@ -272,10 +272,10 @@ function mixHexColors(color1, color2) {
             dif_temp = Math.abs(color1[i] - color2[i]);
             dif_extra = dif_temp % 2;
             dif = Math.floor(dif_temp/2);
+            // console.log(dif_temp, dif_extra, dif);
             if (dif_extra === 1 && dif === 0) {
-                dif++;
-            }
-            if (color1[i] < color2[i]) {
+                col.push(color2[i]);
+            } else if (color1[i] < color2[i]) {
                 col.push(color2[i] - dif);
             } else {
                 col.push(color1[i] - dif);
