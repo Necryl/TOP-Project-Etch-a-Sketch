@@ -98,6 +98,8 @@ label {
 
     height: 50vh;
     width: 50vh;
+    max-width: 60vw;
+    max-height: 60vw;
 
     display: flex;
     flex-direction: column;
@@ -189,4 +191,14 @@ button {
 .shadeMode:hover, .colorWrapper:hover, .bottomBtns *:hover {
     /* font-size: 1em; */
     scale: 1.05;
+}
+
+.footer {
+    position: fixed;
+    bottom: 2%;
+    right: 2%;
+    color: white;
+}
+.footer a {
+    color: rgb(0, 183, 255);
 }
