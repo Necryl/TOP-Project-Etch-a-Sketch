@@ -20,16 +20,21 @@ body {
 }
 
 .options {
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
 
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1em;
 }
 .options ul {
     list-style-type: none;
     margin: 0%;
     padding: 0%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #container {

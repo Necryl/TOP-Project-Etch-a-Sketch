@@ -67,3 +67,6 @@ function constructPixels() {
         pixels.push(pixelArray);
     }
 }
+
+// Run on start
+constructPixels();
