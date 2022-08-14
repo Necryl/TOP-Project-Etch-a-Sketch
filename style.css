@@ -98,7 +98,7 @@ body {
 
 .pixel {
     background-color: white;
-    /* border: 0.1em solid black; */
+    border: 0.1em solid black;
     height: 1em;
     width: 1em;
 
