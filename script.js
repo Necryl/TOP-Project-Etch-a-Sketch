@@ -8,6 +8,7 @@ const shadeBtnElement = document.querySelector('.shadeMode');
 const colorBtnElement = document.querySelector('.colorMode');
 const rainbowBtnElement = document.querySelector('.rainbowMode');
 const eraserBtnElement = document.querySelector('.eraserMode');
+const colorWrapperElement = document.querySelector('.colorWrapper');
 
 // defining letiables
 let resolution = 16;
@@ -26,6 +27,9 @@ colorPickerElement.addEventListener('change', event => {
     if (colorMode === 'color' || shadowMode) {
         currentColor = color;
     }
+});
+colorPickerElement.addEventListener('input', event => {
+    colorWrapperElement.style.backgroundColor = colorPickerElement.value;;
 });
 window.addEventListener('mousedown', event => {
     clicked = true;
@@ -52,20 +56,27 @@ clearBtnElement.addEventListener('click', event => {
 eraserBtnElement.addEventListener('click', event => {
     colorMode = 'eraser';
     currentColor = eraserColor;
+    toggle('eraser');
 })
 colorBtnElement.addEventListener('click', event => {
     colorMode = 'color';
     currentColor = color;
+    toggle('color')
 })
 rainbowBtnElement.addEventListener('click', event => {
     colorMode = 'rainbow';
+    toggle('rain');
 })
 shadeBtnElement.addEventListener('click', event => {
 
     if (shadowMode) {
         shadowMode = false;
+        shadeBtnElement.classList.remove('btnON');
+        shadeBtnElement.classList.add('btnOFF');
     } else {
         shadowMode = true;
+        shadeBtnElement.classList.remove('btnOFF');
+        shadeBtnElement.classList.add('btnON');
     }
 })
 
@@ -116,6 +127,20 @@ function createElement(tag, cls=null, text=null, attr=null) {
     }
     
     return result;
+}
+
+function toggle(btn) {
+    let togglable = [colorBtnElement, rainbowBtnElement, eraserBtnElement];
+
+    for (let i = 0; i < togglable.length; i++) {
+        if (togglable[i].getAttribute('toggle') === btn) {
+            togglable[i].classList.remove('btnOFF');
+            togglable[i].classList.add('btnON');
+        } else {
+            togglable[i].classList.remove('btnON');
+            togglable[i].classList.add('btnOFF');
+        }
+    }
 }
 
 function getColorType(col, checkFor=null) {
@@ -320,5 +345,6 @@ function updateResFromNum() {
 }
 
 // Run on start
+colorWrapperElement.style.backgroundColor = colorPickerElement.value;
 updateResFromSlider();
 constructPixels();
