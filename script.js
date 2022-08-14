@@ -20,7 +20,7 @@ let colorMode = 'color';
 let shadowMode = false;
 
 
-// adding events (apart from the ones for the pixels)
+// adding events (apart from the ones for the pixels, which is in the function addEventToPixel())
 colorPickerElement.addEventListener('change', event => {
     color = colorPickerElement.value;
     if (colorMode === 'color' || shadowMode) {
